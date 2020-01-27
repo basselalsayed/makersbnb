@@ -1,0 +1,14 @@
+.hidden_form {
+  display:none;
+}
+#signUpForm {
+  text-align: center;
+}
+.text_field {
+  text-align: center;
+  display: block;
+  border-radius: 5px;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 10px;
+}
