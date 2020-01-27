@@ -24,3 +24,9 @@
 * Bassel and Jake will research Node.js as the best way to implement PSQL integration
 - node is highly scalable and Single threaded(only one request can be handled at one time), this makes sense for how we would use it here. in larger productions we would need multiple servers but for the project at this time node makes the most sense, node shouldnt be used for more complicated projects such as video encoding 
 however it may be to much time out of the project to teach to 3 people including myself and work around dev related issues we may encounter 
+
+## Monday reflection
+- Database structure ready, implementation needed now
+- Wireframe of web pages ready, development without style to start tomorrow
+- Class models to be written tomorrow
+- Integration with controller & views with aim to have 1st working version by mid Wednesday
