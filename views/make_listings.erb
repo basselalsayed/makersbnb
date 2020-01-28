@@ -21,7 +21,24 @@ Below add details of your property
     <input type=submit id='submitNewProperty' value=Submit>
   </form>
 
-<button type="button" name="Msgs">MSGs</button>
+<form action="/Messages">
+    <input type="submit" value="MSGs" />
+</form>
+
+<div id = 'table'>
+<table>
+  <tr>
+  <h1> Your properties </h1>
+  </tr> 
+  <% @BnB.each do |record| %>
+  <tr>
+    <td class ='new_BnB'><%= record['address'] %> </td>
+    <td class ='code_BnB'> | <%= record['post_code']%> </td>
+       <img src = <%= record['photo'] %> width="300" height="200" alt='test' >
+    </tr>
+   
+    </table>
+    <% end %>
 
 <!-- will add jquery to open msg / or will be own page -->
 

@@ -17,6 +17,8 @@ class BnB < Sinatra::Base
   end
 
   get '/make_listings' do 
+    
+    @BnB = BnBControl.all 
 
     erb :make_listings
   end 
