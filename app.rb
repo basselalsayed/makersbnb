@@ -21,6 +21,10 @@ class BnB < Sinatra::Base
     erb :make_listings
   end 
 
+  get '/Messages' do 
+
+    erb :Messages
+  end 
   post '/log_in' do
     redirect '/'
   end
