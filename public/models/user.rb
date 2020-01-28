@@ -27,7 +27,7 @@ class User
   def self.login(email, password)
     return false unless is_email?(email)
     user = return_user('email', email)
-    return false if user.num_tuples.zero?
+    return false if user.nu m_tuples.zero?
     check_email_and_password(user, email, password)
   end
 
