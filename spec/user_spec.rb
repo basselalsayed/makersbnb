@@ -64,4 +64,11 @@ describe User do
       expect(subject_2.login('tommy@gun.com', '00100')).to be_a User
     end
   end
+
+  describe '.delete' do
+    it 'deletes a user' do
+      subject_2.delete(uid: subject_2.all.last.uid)
+      expect(subject_2.all).to be_empty
+    end
+  end
 end

@@ -31,6 +31,11 @@ class User
     check_email_and_password(user, email, password)
   end
 
+  def self.delete(uid:)
+    DatabaseConnection.query("DELETE FROM properties WHERE uid = #{uid}")
+    DatabaseConnection.query("DELETE FROM users WHERE uid = #{uid}")
+  end
+
   private
 
   def self.return_user(column, data)
