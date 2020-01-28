@@ -10,4 +10,10 @@ feature '/' do
     click_button('Sign Up')
     expect(page).to have_button 'Submit'
   end
+
+  scenario 'will show listing of properties' do
+    visit '/'
+    expect(page).to have_content '20 test avenue'
+  end
+
 end
