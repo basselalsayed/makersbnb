@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title> {(BnB)} Market </title>
+  </head>
+
+<div id= 'user_listings'>
+ </div>
+ <body>
+ Market BnB
+ </body>
+<a href = '/make_listings' > Looking to show your own listing? </a>
+<div id = 'table'>
+<table>
+  <tr>
+  <h1> BnB-able properties </h1>
+  </tr> 
+  <% @BnB.each do |record| %>
+  <tr>
+    <td class ='new_BnB'><%= record['address'] %> </td>
+    <td class ='code_BnB'> | <%= record['post_code']%> </td>
+    </tr>
+    <% end %>
+    </table>
+
+    </div>
