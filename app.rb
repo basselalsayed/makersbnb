@@ -27,6 +27,7 @@ class BnB < Sinatra::Base
 
     erb :Messages
   end 
+  
   post '/log_in' do
     redirect '/'
   end
