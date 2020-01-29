@@ -2,16 +2,15 @@ require 'pg'
 require_relative 'db_connect'
 
 class Property
-  attr_reader :address, :postcode, :photo, :pid, :uid, :data
+  attr_reader :address, :post_code, :photo, :pid, :uid, :data
 
 
   def initialize(db_row)
      @address = db_row['address']
-     @postcode = db_row['postcode']
+     @post_code = db_row['post_code']
      @photo = db_row['photo']
      @pid = db_row['pid']
      @uid = db_row['uid']
-    
   end 
 
 
@@ -22,9 +21,9 @@ class Property
   end 
 
 
-  def self.create(address:, postcode:, photo:, uid:)
+  def self.create(address:, post_code:, photo:, uid:)
     DatabaseConnection.setup
-    DatabaseConnection.query("INSERT INTO properties(address, postcode, photo) VALUES ('#{address}', '#{postcode}', '#{photo}')")
+    DatabaseConnection.query("INSERT INTO properties(address, post_code, photo, uid) VALUES ('#{address}', '#{post_code}', '#{photo}', '#{uid}')")
   end 
 
 
