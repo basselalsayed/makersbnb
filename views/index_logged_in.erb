@@ -19,15 +19,37 @@
   </tr> 
   <% @BnB.each do |record| %>
   <tr>
-    <td class ='new_BnB'><%= record['address'] %> </td>
+     <td class ='new_BnB'><%= record['address']%> </td>
     <td class ='code_BnB'> | <%= record['post_code']%> </td>
-       <img src = <%= record['photo'] %> width="300" height="200" alt='test' >
+    <br>
+    <a id="OpenDialog" href="#"> <img src = <%= record['photo'] %> width="300" height="200" alt='test' >
+    </a> 
+    <div id="dialog" title="Property Info" style="display: none;" >
+    <p>
+    <p>Start date: <input type="text" id="datepicker"> End date: <input type="text" id="datepicker2"></p>
+    <input type = "submit" value='Submit'>
+     <h1 font size='2'> Description </h1>
+     <p> .. </p>
+    </p>
+     
+    </div>
+    
     </tr>
    
     </table>
     <% end %>
 
     <head>
+
+    <head>
+<title></title>
+</head>
+<body>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+</body>
 
   <%# <title>jQuery UI Datepicker - Default functionality</title> %>
 
@@ -36,22 +58,8 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
-<script>
-  $( function() {
-    $( "#datepicker2" ).datepicker();
-  } );
-  </script>
-
 </head>
-<body>
- <%# this will likely get refactored into a hidden form %>
-<p>Start date: <input type="text" id="datepicker"> End date: <input type="text" id="datepicker2"></p>
- <input type = "submit" value='Submit'>
-<%# submit will need to grab an create values for start and end date in db waiting on team %>
-</body>
+
+  <script src="interface.js"></script>
+
 </div>
