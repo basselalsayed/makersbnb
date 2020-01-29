@@ -1,3 +1,4 @@
+require 'bcrypt'
 require 'pg'
 require_relative 'db_connect'
 require_relative 'booking'
@@ -18,7 +19,7 @@ class User
   def self.create(name:, email:, password:, phone:)
     return false unless is_email?(email)
     DatabaseConnection.setup
-    DatabaseConnection.query("INSERT INTO users (name, email, password, phone) VALUES ('#{name}', '#{email}', '#{password}', '#{phone}')")
+    DatabaseConnection.query("INSERT INTO users (name, email, password, phone) VALUES ('#{name}', '#{email}', '#{encrypt(password)}', '#{phone}')")
   end
 
   def new_booking_request(pid:, check_in:, check_out:)
@@ -42,14 +43,19 @@ class User
     DatabaseConnection.query("DELETE FROM users WHERE uid = #{uid}")
   end
 
+
   private
+  
+  def self.encrypt(password)
+    BCrypt::Password.create(password)
+  end
 
   def self.return_user(column, data)
     DatabaseConnection.query("SELECT * FROM users WHERE #{column} = '#{data}'")
   end
   
   def self.check_email_and_password(user, email, password)
-    User.new(user.first) if user.first['email'] == email && user.first['password'] == password
+    User.new(user.first) if user.first['email'] == email && BCrypt::Password.new(user.first['password']) == password
   end
 
   def self.is_email?(email)

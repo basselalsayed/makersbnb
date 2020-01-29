@@ -26,6 +26,7 @@ describe Booking do
       expect(subject_2.all.last.pid).to eq '20'
     end
   end
+  
   describe '.return' do
     it 'returns a list of bookings' do
       expect(subject_2.return).to be_a Array
