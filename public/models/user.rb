@@ -1,5 +1,7 @@
 require 'pg'
 require_relative 'db_connect'
+require_relative 'booking'
+# require_relative 'property'
 
 class User
 
@@ -17,6 +19,10 @@ class User
     return false unless is_email?(email)
     DatabaseConnection.setup
     DatabaseConnection.query("INSERT INTO users (name, email, password, phone) VALUES ('#{name}', '#{email}', '#{password}', '#{phone}')")
+  end
+
+  def new_booking_request(pid:, check_in:, check_out:)
+    Booking.create(renter_uid: @uid, pid: pid, check_in: check_in, check_out: check_out)
   end
 
   def self.all 

@@ -35,7 +35,7 @@ describe User do
       expect(subject_2.all.last).to be_a User
     end
     it 'iinitializez correctly' do
-      expect(subject_2.all.last.name).to eq 'Tommy Gun'
+      expect(subject_2.all.first.name).to eq 'Tommy Gun'
     end
   end
 
@@ -67,6 +67,7 @@ describe User do
 
   describe '.delete' do
     it 'deletes a user' do
+      subject_2.delete(uid: subject_2.all.last.uid)
       subject_2.delete(uid: subject_2.all.last.uid)
       expect(subject_2.all).to be_empty
     end
