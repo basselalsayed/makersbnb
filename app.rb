@@ -1,19 +1,20 @@
 require 'sinatra/base'
 require_relative 'lib/BnB'
 require 'pg'
+require_relative '/public/models/user'
 
 class BnB < Sinatra::Base
   enable :sessions
 
   get '/' do
-    #if session[:user] 
-
+    if session[:user] 
+      @user = User.login
       @BnB = BnBControl.all 
 
       erb :index_logged_in 
-    # else
-    #   erb :index
-    # end
+    else
+      erb :index
+    end
   end
 
   get '/make_listings' do 
