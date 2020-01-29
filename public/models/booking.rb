@@ -15,9 +15,7 @@ class Booking
   end
 
   def self.create(renter_uid:, check_in:, check_out:, pid:)
-    owner_uid = DatabaseConnection.query("SELECT * FROM properties WHERE pid = '#{pid}'")#.first['uid']
-    p owner_uid
-    DatabaseConnection.setup
+    owner_uid = DatabaseConnection.query("SELECT * FROM properties WHERE pid = '#{pid}'").first['uid']
     DatabaseConnection.query("INSERT INTO bookings (owner_uid, renter_uid, check_in, check_out, pid) VALUES ('#{owner_uid}', '#{renter_uid}', '#{check_in}', '#{check_out}', '#{pid}')")
   end
 

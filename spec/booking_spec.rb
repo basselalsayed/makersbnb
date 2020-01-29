@@ -10,8 +10,8 @@ describe Booking do
                                       
   })}
   let(:subject_2) { Booking }
-  let(:user) { User.all.first }
-  let(:user_2) { User.all.last }
+  let(:tommy) { User.all.first }
+  let(:joe) { User.all.last }
 
   describe '#initialization' do
     it 'initializes correctly' do
@@ -22,15 +22,15 @@ describe Booking do
 
   describe '.create' do
     it 'adds a booking to the database' do
-      subject_2.create(renter_uid: user_2.uid, check_in: '03/20/2020', check_out: '03/25/2020', pid: '20')
-      expect(subject_2.all.last.pid).to eq '20'
+      subject_2.create(renter_uid: joe.uid, check_in: '03/20/2020', check_out: '03/25/2020', pid: "#{Property.all.first.pid}")
+      expect(subject_2.return('renter_uid', joe.uid).first.renter_uid).to eq joe.uid
     end
   end
   
   describe '.return' do
-    it 'returns a list of bookings' do
-      expect(subject_2.return).to be_a Array
-      expect(subject_2.last.check_in).to eq '02/02/2020'
+    it 'returns a booking' do
+      expect(subject_2.return('renter_uid', joe.uid).first).to be_a Booking
+      expect(subject_2.return('renter_uid', joe.uid).first.check_in).to eq '2020-10-10'
     end
   end
 end

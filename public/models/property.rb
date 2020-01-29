@@ -23,11 +23,12 @@ class Property
 
   def self.create(address:, post_code:, photo:, uid:)
     DatabaseConnection.setup
-    DatabaseConnection.query("INSERT INTO properties(address, post_code, photo, uid) VALUES ('#{address}', '#{post_code}', '#{photo}', '#{uid}')")
+    DatabaseConnection.query("INSERT INTO properties (address, post_code, photo, uid) VALUES ('#{address}', '#{post_code}', '#{photo}', '#{uid}')")
   end 
 
 
   def self.delete(pid:)
+    DatabaseConnection.query("DELETE FROM bookings WHERE pid = #{pid}")
     DatabaseConnection.query("DELETE FROM properties WHERE pid = #{pid}")
   end 
 
