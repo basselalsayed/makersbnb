@@ -22,7 +22,7 @@ class Property
 
 
   def self.create(address:, post_code:, photo:, uid:)
-    DatabaseConnection.setup
+    # DatabaseConnection.setup
     DatabaseConnection.query("INSERT INTO properties (address, post_code, photo, uid) VALUES ('#{address}', '#{post_code}', '#{photo}', '#{uid}')")
   end 
 

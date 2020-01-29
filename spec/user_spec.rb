@@ -67,7 +67,6 @@ describe User do
 
   describe '.delete' do
     it 'deletes a user' do
-      p subject_2.all
       subject_2.delete(uid: subject_2.all.last.uid)
       subject_2.delete(uid: subject_2.all.last.uid)
       expect(subject_2.all).to be_empty

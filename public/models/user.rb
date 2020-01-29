@@ -18,7 +18,7 @@ class User
 
   def self.create(name:, email:, password:, phone:)
     return false unless is_email?(email)
-    DatabaseConnection.setup
+    # DatabaseConnection.setup
     DatabaseConnection.query("INSERT INTO users (name, email, password, phone) VALUES ('#{name}', '#{email}', '#{encrypt(password)}', '#{phone}')")
   end
 
@@ -27,7 +27,7 @@ class User
   end
 
   def self.all 
-    DatabaseConnection.setup
+    # DatabaseConnection.setup
     DatabaseConnection.query("SELECT * FROM users").map { |row| User.new(row) }
   end
   
@@ -39,6 +39,12 @@ class User
   end
 
   def self.delete(uid:)
+    DatabaseConnection.query("DELETE FROM bookings z
+                              USING
+                              (SELECT pid
+                              from properties WHERE uid = #{uid}) a
+                              where a.pid = z.pid
+                              returning * ")
     DatabaseConnection.query("DELETE FROM properties WHERE uid = #{uid}")
     DatabaseConnection.query("DELETE FROM users WHERE uid = #{uid}")
   end

@@ -18,7 +18,7 @@ class Booking
     owner_uid = DatabaseConnection.query("SELECT * FROM properties WHERE pid = '#{pid}'").first['uid']
     DatabaseConnection.query("INSERT INTO bookings (owner_uid, renter_uid, check_in, check_out, pid) VALUES ('#{owner_uid}', '#{renter_uid}', '#{check_in}', '#{check_out}', '#{pid}')")
   end
-
+#jhgfesdghdtyfghj
   def self.return(column, data)
     DatabaseConnection.query("SELECT * FROM bookings WHERE #{column} = '#{data}'").map { |row| Booking.new(row) }
   end

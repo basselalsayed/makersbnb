@@ -1,5 +1,5 @@
 def setup_test_database
-  DatabaseConnection.setup
+  # DatabaseConnection.setup
   DatabaseConnection.query('TRUNCATE users, properties, bookings')
   DatabaseConnection.query("INSERT INTO users (email, name, password, phone) VALUES ('tommy@gun.com', 'Tommy Gun', '#{BCrypt::Password.create('00100')}', '055555')")
   DatabaseConnection.query("INSERT INTO users (email, name, password, phone) VALUES ('joe@bloggs.com', 'Joe Bloggs', '#{BCrypt::Password.create('passw')}', '99999')")

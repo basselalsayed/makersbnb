@@ -1,4 +1,4 @@
-feature '/' do
+xfeature '/' do
   scenario 'contains info and buttons required' do 
     visit '/'
     expect(page).to have_button 'Sign Up'

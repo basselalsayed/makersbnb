@@ -11,3 +11,12 @@ gem 'pg'
 gem 'rerun'
 gem 'rspec'
 gem 'sinatra'
+
+DELETE FROM bookings z
+USING
+ (
+  SELECT pid
+  from properties WHERE uid = '3722'
+) a
+where a.pid = z.pid
+returning *;
