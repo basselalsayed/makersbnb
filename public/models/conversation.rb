@@ -25,7 +25,7 @@ class Conversation
                               VALUES ('#{u1_id}', '#{u2_id}')")
   end
 
-  def self.messages
+  def messages
     Message.all(cid: @cid)
   end
   

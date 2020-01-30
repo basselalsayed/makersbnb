@@ -6,13 +6,13 @@ attr_reader :mid, :sender_uid, :content, :time
     @cid = db_row['cid']
     @sender_uid = db_row['sender_uid']
     @content = db_row['content']
-    @time = Time.parse(row['time'])
+    @time = Time.parse(db_row['time'])
   end
 
   def self.all(cid:)
     DatabaseConnection.query("SELECT * FROM messages
                               WHERE 
-                              cid = #{@cid}"
+                              cid = #{cid}"
     ).map { |row| Message.new(row) }
   end
 
