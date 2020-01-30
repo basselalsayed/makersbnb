@@ -8,7 +8,7 @@ CREATE TABLE bookings (bid SERIAL PRIMARY KEY, check_in DATE, check_out DATE, pi
 
 CREATE TABLE conversations (cid SERIAL PRIMARY KEY, u1_id INTEGER references users(uid), u2_id INTEGER references users(uid));
 
-CREATE TABLE messages (mid SERIAL PRIMARY KEY, time TIMESTAMPTZ, sender_uid INTEGER references users(uid), receiver_uid INTEGER references users(uid), cid INTEGER references conversations(cid));
+CREATE TABLE messages (mid SERIAL PRIMARY KEY, content VARCHAR(500), time TIMESTAMPTZ, sender_uid INTEGER references users(uid), cid INTEGER references conversations(cid));
 
 INSERT INTO users (name, email, password, phone) VALUES
 

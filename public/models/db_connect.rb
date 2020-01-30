@@ -13,10 +13,6 @@ class DatabaseConnection
     end
   end
 
-  # def self.query(query_string)
-  #   @connection.exec(query_string)
-  # end
-
   private
 
   def self.environment
