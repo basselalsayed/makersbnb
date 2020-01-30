@@ -17,12 +17,12 @@
   <tr>
   <h1> BnB-able properties </h1>
   </tr> 
-  <% @BnB.each do |record| %>
+  <% @proper.each do |record| %>
   <tr>
-     <td class ='new_BnB'><%= record['address']%> </td>
-    <td class ='code_BnB'> | <%= record['post_code']%> </td>
+     <td class ='new_BnB'><%= record.address%> </td>
+    <td class ='code_BnB'> | <%= record.post_code%> </td>
     <br>
-    <a id="OpenDialog" href="#"> <img src = <%= record['photo'] %> width="300" height="200" alt='test' >
+    <a id="OpenDialog" href="#"> <img src = <%= record.photo %> width="300" height="200" alt='test' >
     </a> 
     <div id="dialog" title="Property Info" style="display: none;" >
     <p>

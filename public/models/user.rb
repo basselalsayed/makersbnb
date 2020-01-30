@@ -20,7 +20,8 @@ class User
     @phone = db_row['phone']
   end
 
-  def self.create(name:, email:, password:, phone:)
+  def self.create(email:, password:)
+    # name:, phone:
     return false unless is_email?(email)
     DatabaseConnection.query("INSERT INTO users (name, email, password, phone) VALUES ('#{name}', '#{email}', '#{encrypt(password)}', '#{phone}')")
   end
@@ -39,6 +40,17 @@ class User
     return false if user.num_tuples.zero?
     check_email_and_password(user, email, password)
   end
+
+  # def self.authenticate(email, password)
+  #   user = first(email: email)
+  #   return nil unless user
+
+  #   if user.password == password
+  #     user
+  #   else
+  #     nil
+  #   end
+  # end
 
   def self.delete(uid:)
     DatabaseConnection.query("DELETE FROM bookings z
@@ -69,4 +81,6 @@ class User
   def self.is_email?(email)
     email =~ URI::MailTo::EMAIL_REGEXP
   end
-end
+
+  
+end 

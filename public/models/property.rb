@@ -1,3 +1,5 @@
+require_relative 'db_connect.rb'
+
 class Property
   attr_reader :address, :post_code, :photo, :pid, :uid, :data
 
@@ -11,6 +13,8 @@ class Property
 
   def self.all
      DatabaseConnection.query("SELECT * FROM properties").map { |row| Property.new(row) }
+     p DatabaseConnection.query("SELECT * FROM properties").map { |row| Property.new(row) }
+
   end 
 
   def self.create(address:, post_code:, photo:, uid:)
