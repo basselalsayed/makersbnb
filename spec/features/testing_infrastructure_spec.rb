@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 feature '/' do
   scenario 'contains info and buttons required' do
+=======
+xfeature '/' do
+  scenario 'contains info and buttons required' do 
+>>>>>>> origin/master
     visit '/'
     expect(page).to have_button 'Sign Up'
     expect(page).to have_content 'BnB'

@@ -20,3 +20,42 @@
 .column {
   flex: 50%;
 }
+
+
+html, body {
+   padding: 1;
+   margin: 1;
+            }
+
+    input {
+      font-size: 16px;
+      font-family: Helvetica, sans-serif;
+            }
+
+     body {
+      background-color: #66AACC;
+      font-family: sans-serif, arial, helvetica;
+      padding-bottom: 50px;
+            }
+
+     .container {
+        background-color: #FFFFFF;
+        max-width: 600px;
+       margin: 20px auto 0 auto;
+      padding: 15px 20px 1px 20px;
+            }
+
+    .form-row {
+        padding: 10px 0;
+         display: flex;
+            }
+
+    .form-row label {
+         padding-right: 10px;
+            }
+
+    .form-row input {
+        padding-right: 10px;
+       flex: 1;
+            }
+    

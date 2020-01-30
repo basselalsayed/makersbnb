@@ -1,7 +1,9 @@
 require 'sinatra/base'
 require_relative 'lib/BnB'
+require './public/models/user'
+require './public/models/booking'
 require 'pg'
-require_relative '/public/models/user'
+#require_relative '/public/models/user'
 
 class BnB < Sinatra::Base
   enable :sessions
