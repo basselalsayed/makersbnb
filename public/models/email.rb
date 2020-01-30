@@ -3,7 +3,7 @@ include SendGrid
 require 'json'
 require_relative 'db_connect'
 
-class Email
+class Email 
 
 attr_reader :id, :from, :to, :subject, :content, :bid
 
@@ -17,10 +17,10 @@ def initialize(id:, from:, to:, subject:, content:, bid:)
 end 
 
 def make_booking
-  email_from = Email.new(email: 'emilyspencer89@hotmail.co.uk')
+  email_from = SendGrid::Email.new(email: 'emilyspencer89@hotmail.co.uk')
   subject = 'Hello World from the Twilio SendGrid Ruby Library'
-  email_to = Email.new(email: 'imraan91@hotmail.co.uk')
-  content = Content.new(type: 'text/plain', value: 'Sending test email')
+  email_to = SendGrid::Email.new(email: 'imraan91@hotmail.co.uk')
+  content = SendGrid::Content.new(type: 'text/plain', value: 'Sending test email')
   mail = SendGrid::Mail.new(email_from, subject, email_to, content)
   # puts JSON.pretty_generate(mail.to_json)
   puts mail.to_json

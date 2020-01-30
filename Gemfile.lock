@@ -50,6 +50,9 @@ GEM
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
     ruby2_keywords (0.0.2)
+    ruby_http_client (3.3.0)
+    sendgrid-ruby (6.0.4)
+      ruby_http_client (~> 3.3.0)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -68,6 +71,7 @@ DEPENDENCIES
   pg
   rerun
   rspec
+  sendgrid-ruby
   sinatra
 
 BUNDLED WITH
