@@ -20,8 +20,7 @@ class User
     @phone = db_row['phone']
   end
 
-  def self.create(email:, password:)
-    # name:, phone:
+  def self.create(email:, password:, name:, phone:)
     return false unless is_email?(email)
     DatabaseConnection.query("INSERT INTO users (name, email, password, phone) VALUES ('#{name}', '#{email}', '#{encrypt(password)}', '#{phone}')")
   end

@@ -12,7 +12,7 @@ class BnB < Sinatra::Base
 
   get '/' do
    
-    @userMaster = User.new('email','password')
+    @userMaster = User.new('email')
 
 
     if session[:uid] = @uid
