@@ -1,10 +1,13 @@
-ENV['RACK_ENV'] = 'test'
+# ENV['RACK_ENV'] = 'test'
+# if i uncomment this line and set to test env the index_logged_in page breaks.
+# i dont know what to do here
 
 require 'sinatra/base'
 require_relative 'lib/BnB'
 require './public/models/user'
 require './public/models/booking'
 require 'pg'
+require_relative './public/models/property'
 #require_relative '/public/models/user'
 
 class BnB < Sinatra::Base
@@ -17,7 +20,7 @@ class BnB < Sinatra::Base
 
     if session[:uid] = @uid
  
-      # @BnB = BnBControl.all 
+      @proper = Property.all
 
       erb :index_logged_in 
     else
@@ -30,11 +33,11 @@ class BnB < Sinatra::Base
     @BnB = BnBControl.all 
 
     @prop = Property.create(
-      name: params[:name],
-      price: params[:price],
-      description: params[:description],
-      available_from: params[:available_from],
-      available_to: params[:available_to]
+      address: params[:address],
+      post_code: params[:post_code],
+      photo: params[:photo],
+      pid: params[:pid],
+      uid: params[:uid]
     )
 
     # dates = space.make_dates(space.available_from, space.available_to)

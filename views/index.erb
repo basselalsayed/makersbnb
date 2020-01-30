@@ -18,8 +18,8 @@
 
            <form id='frmSignIn' name='frmSignIn' action='/log_in' method='post' onsubmit='return checkform(this);'>
             <div class="form-row">
-          <%# <% if @userMaster.login %>
-      <label for="Email" <% @email.email Email address: label> %>
+          <% if @userMaster.login %>
+      <label for="Email" <% @email.email %> Email address:  >
       <input type="text" id="email" name="email">
     </div>
    <div class="form-row">
@@ -28,7 +28,7 @@
     </div>
     <div class="form-row">
       <input type="submit" id="btn_submit_sign_in" value='Sign In'>
-      <%# <% end %>
+      <% end %>
       </div>
      </form>
   </div>
