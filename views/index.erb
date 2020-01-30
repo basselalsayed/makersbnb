@@ -19,11 +19,11 @@
            <form id='frmSignIn' name='frmSignIn' action='/log_in' method='post' onsubmit='return checkform(this);'>
             <div class="form-row">
           <% if @userMaster.login %>
-      <label for="Email" <% @email.email %> Email address: </label>
+      <label for="Email" <% @email.email %> Email address: label>
       <input type="text" id="email" name="email">
     </div>
    <div class="form-row">
-      <label for="Email" <% @password.password %>Password: </label>
+      <label for="Email" <% @password.password %> Password: 
       <input type="text" id="password" name="password">
     </div>
     <div class="form-row">

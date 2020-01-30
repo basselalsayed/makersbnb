@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'sinatra/base'
 require_relative 'lib/BnB'
 require './public/models/user'
