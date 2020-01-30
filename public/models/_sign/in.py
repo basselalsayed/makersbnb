@@ -3,6 +3,8 @@ from flask import render_template # render the html form
 from flask import request # get user input from sign-in form
 import hashlib # included in Python library, not installed
 import psycopg2
+import flask_mail 
+import Mail  
 #
 #
 #
@@ -11,16 +13,30 @@ from flask_mail import Message
 app = Flask(__name__)
 
 #mail 
-  #
-  #
-  #
+def smtp_config(config_name, smtp=1):
+    with open(config_name) as f: 
+        config_data = json.load(f)
+        if smtp not in {1,2}:
+            raise ValueError("stmp can only be 1 or 2")
+        if stmp==2: 
+            MAIL_USERNAME = config_data['MAIL_USERNAME'][1]
+            MAIL_PASSWORD = config_data['MAIL_PASSWORD'][1]
+        else: 
+            MAIL_USERNAME = config_data['MAIL_USERNAME'][0]
+            MAIL_PASSWORD = config_data['MAIL_PASSWORD'][0]
+        MAIL_SERVER = config_data['MAIL_SERVER']
+        MAIL_PORT = config_data['MAIL_PORT']
+        MAIL_USE_TLS = bool(config_data['MAIL_USE_TLS'])
+        return [MAIL_USERNAME, MAIL_PASSWORD, MAIL_SERVER, MAIL_SERVER, MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS]
+
+        mail = Mail()
 
 #database 
 t_host = 'database address'
 t_port = '5432'
-t_dbname = 'database name'
-t_user = 'data user name'
-t_pw = 'database user password'
+t_dbname = 'makers_bnb'
+t_user = 'username'
+t_pw = 'password'
 db_conn = psycopg2.connect(host=t_host, port=t_port, dbname=t_dbname, user=t_user, password=t_pw)
 db_cursor = db_conn.db_cursor()
 
@@ -112,4 +128,55 @@ def sign_in():
             t_message = "Login: Database error: " + e + "/n SQL: " + s
             return render_template("sign_in.html", message = t_message)
         db_cursor.close()
-        
+
+         return redirect("/index_logged_in", code=302)
+
+             if t_stage == "forgot":
+             smtp_data = smtp_config('config.json', smtp=1)
+            app.config.update(dict(
+            MAIL_SERVER = smtp_data[2],
+             MAIL_PORT = smtp_data[3],
+            MAIL_USE_TLS = smtp_data[4],
+            MAIL_USERNAME = smtp_data[0],
+            MAIL_PASSWORD = smtp_data[1],
+            ))
+            mail.init_app(app)
+            t_subject = "Password reset link"
+            t_recipients = t_email
+            t_sender = "an email will go here?"
+
+         s = ""
+        s += "Dear " + s_email + "<br>"
+        s += "<br>"
+        s += "You forgot your password?" + "<br>"
+        s += "<br>"
+        s += "Here is your password reset link. Please click on the following link or paste it into your web browser:" + "<br>"
+        s += "<br>"
+        s += "<a href='http://localhost:/9292/sign_in.py?forgot=step2&ID_user=" + ID_user
+        s += "'>https://localhost:/9292/sign_in.py?forgot=step2&ID_user=" + ID_user
+        s += "</a>" + "<br>"
+        s += "<br>"
+        s += "Feel free to reply to this message." + "<br>"
+        s += "<br>"
+
+         msg = Message(
+            body = s,
+            subject = t_subject,
+            recipients = [t_recipients],
+            sender = t_sender,
+            reply_to = t_sender
+            )
+
+        mail.send(msg)
+
+        t_message = "Login: Password reset link was sent to your email address."
+        return render_template("sign_in.html", message = t_message)
+
+        if t_stage == "reset":
+            #
+            #
+            #
+
+#cmd line testin
+ if __name__ == "__main__":
+     app.run(debug=True)

@@ -22,6 +22,19 @@ class BnB < Sinatra::Base
   get '/make_listings' do 
     
     @BnB = BnBControl.all 
+    
+    erb :make_listings
+  end 
+
+  post '/make_listings' do 
+    @prop = Property.create(
+
+    name: params[:name],
+      price: params[:price],
+      description: params[:description],
+      available_from: params[:available_from],
+      available_to: params[:available_to]
+    )
 
     erb :make_listings
   end 
@@ -30,11 +43,37 @@ class BnB < Sinatra::Base
 
     erb :Messages
   end 
+
+  get '/index_logged_in' do 
+    
+    @BnB = BnBControl.all 
+
+    erb :index_logged_in
+
+  end 
   
-  post '/log_in' do
+  post '/sign_in' do
     redirect '/'
   end
 
+  post '/signup' do
+    user = User.create(email: params[:email], password: params[:password])
+    session[:user_id] = user.id
+    redirect '/profile'
+  end
+
+  post '/signin' do
+    user = User.authenticate(params[:email], params[:password])
+
+    if user
+      session[:user_id] = user.id
+      redirect '/profile'
+    else
+      redirect '/signin'
+    end
+  end
+
+  
   run! if app_file == $0
 
 
