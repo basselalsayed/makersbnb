@@ -25,12 +25,10 @@ attr_reader :mid, :sender_uid, :receiver_uid, :content, :time
     @time = Time.parse(db_row['time'])
   end
 
-  def self.all(sender_uid:)
+  def self.all(cid:)
     DatabaseConnection.query("SELECT * FROM messages
                               WHERE 
-                              sender_uid = #{sender_uid}
-                              OR
-                              receiver_uid = #{sender_uid}"
+                              cid = #{@cid}"
     ).map { |row| Message.new(row) }
   end
 

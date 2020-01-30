@@ -16,7 +16,7 @@ class Conversation
   end
   
   def self.messages
-    Message.all(sender_uid: @u1_id, receiver_uid: @u2_id )
+    Message.all(sender_uid: @u1_id)
   end
   
 end
