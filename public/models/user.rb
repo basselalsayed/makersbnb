@@ -1,8 +1,12 @@
+#gems
 require 'bcrypt'
 require 'pg'
-require_relative 'db_connect'
+#files
 require_relative 'booking'
+require_relative 'db_connect'
 require_relative 'property'
+require_relative 'conversation'
+require_relative 'message'
 
 class User
 
@@ -18,7 +22,6 @@ class User
 
   def self.create(name:, email:, password:, phone:)
     return false unless is_email?(email)
-    # DatabaseConnection.setup
     DatabaseConnection.query("INSERT INTO users (name, email, password, phone) VALUES ('#{name}', '#{email}', '#{encrypt(password)}', '#{phone}')")
   end
 
@@ -26,8 +29,7 @@ class User
     Booking.create(renter_uid: @uid, pid: pid, check_in: check_in, check_out: check_out)
   end
 
-  def self.all 
-    # DatabaseConnection.setup
+  def self.all
     DatabaseConnection.query("SELECT * FROM users").map { |row| User.new(row) }
   end
   

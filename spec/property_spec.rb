@@ -1,6 +1,5 @@
 require_relative '../public/models/property'
 
-
 describe Property do # a new instance of the Property class has an address postcode photo puid uid
   let(:subject) { described_class.new({'address' => 'Crescent Road',
                                      'post_code' => 'SW20 XXX', 
@@ -47,7 +46,7 @@ describe Property do # a new instance of the Property class has an address postc
     end    
   end 
 
-  describe '.delete' do
+  xdescribe '.delete' do
     it 'deletes a property' do
       subject_2.delete(pid: subject_2.all.last.pid)
       subject_2.delete(pid: subject_2.all.last.pid)

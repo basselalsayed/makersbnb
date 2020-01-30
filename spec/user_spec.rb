@@ -65,7 +65,7 @@ describe User do
     end
   end
 
-  describe '.delete' do
+  xdescribe '.delete' do
     it 'deletes a user' do
       subject_2.delete(uid: subject_2.all.last.uid)
       subject_2.delete(uid: subject_2.all.last.uid)
