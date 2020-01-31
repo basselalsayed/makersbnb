@@ -8,6 +8,8 @@ require './public/models/user'
 require './public/models/booking'
 require 'pg'
 require_relative './public/models/property'
+require_relative './public/models/message'
+
 #require_relative '/public/models/user'
 
 class BnB < Sinatra::Base
@@ -55,14 +57,15 @@ class BnB < Sinatra::Base
   end 
 
   get '/Messages' do 
-
+        @chat = Message.all
+        p @chat
     erb :Messages
   end 
 
   get '/index_logged_in' do 
 
     @proper = Property.all 
-    p @proper
+  
     erb :index_logged_in
   end
   
