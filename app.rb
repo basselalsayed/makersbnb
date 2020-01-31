@@ -57,7 +57,7 @@ class BnB < Sinatra::Base
   end 
 
   get '/Messages' do 
-        @chat = Message.all
+        @chat = Message.all['cid']
         p @chat
     erb :Messages
   end 

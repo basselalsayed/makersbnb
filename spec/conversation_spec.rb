@@ -6,7 +6,13 @@ describe Conversation do
                   'u1_id' => '2', 
                   'u2_id' => '3',
                }}
+  let(:db_row_2) {{'cid' => "#{Conversation.all(uid: User.all.first.uid).first.cid}",
+                  'u1_id' => "#{User.all.first.uid}", 
+                  'u2_id' => "#{User.all.last.uid}",
+               }}
   let(:instance) { described_class.new(db_row) }
+  let(:instance_2) { described_class.new(db_row_2) }
+  let(:conversations) { Conversation.all(uid: User.all.first.uid) }
   
   describe '#initialization' do
     it 'has an id' do
@@ -19,15 +25,15 @@ describe Conversation do
 
   describe '.all' do
     it 'returns an array of conversations' do
-      expect(Conversation.all(uid: User.all.first.uid)).to be_a Array
-      expect(Conversation.all(uid: User.all.first.uid).first).to be_a Conversation
+      expect(conversations).to be_a Array
+      expect(conversations.first).to be_a Conversation
     end
   end
 
   describe '.messages' do
     it 'returns an array of mesasges' do
-      expect(Conversation.messages).to be_a Array
-      expect(Conversation.messages.first).to be_a Message
+      expect(instance_2.messages).to be_a Array
+      expect(instance_2.messages.first).to be_a Message
     end
   end
 
