@@ -1,9 +1,10 @@
-.hidden_form {
+.login_form {
   display:none;
 }
-#signUpForm {
-  text-align: center;
+.signup_form {
+  display:none;
 }
+
 .text_field {
   text-align: center;
   display: block;
@@ -12,16 +13,6 @@
   height: 50px;
   margin-bottom: 10px;
 }
-/*
- * Made by Erik Terwan
- * 24th of November 2015
- * MIT License
- *
- *
- * If you are thinking of using this in
- * production code, beware of the browser
- * prefixes.
- */
 
  #menuToggle
  {
@@ -67,9 +58,6 @@
    -webkit-touch-callout: none;
  }
  
- /*
-  * Just a quick hamburger
-  */
  #menuToggle span
  {
    display: block;
@@ -202,3 +190,50 @@
   -moz-box-shadow:0 0 25px #111;
   max-width:940px;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+
+html, body {
+   padding: 1;
+   margin: 1;
+            }
+
+    input {
+      font-size: 16px;
+      font-family: Helvetica, sans-serif;
+            }
+
+     body {
+      background-color: grey;
+      font-family: sans-serif, arial, helvetica;
+      padding-bottom: 50px;
+            }
+
+     .container {
+        background-color: #FFFFFF;
+        max-width: 600px;
+       margin: 20px auto 0 auto;
+      padding: 15px 20px 1px 20px;
+            }
+
+    .form-row {
+        padding: 10px 0;
+         display: flex;
+            }
+
+    .form-row label {
+         padding-right: 10px;
+            }
+
+    .form-row input {
+        padding-right: 10px;
+       flex: 1;
+            }
+    

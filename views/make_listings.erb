@@ -13,15 +13,33 @@ Below add details of your property
 
 <button type=submit id=signUpButton>Add Info</button>
 
-  <form id=signUpForm class='hidden_form' method=post action=log_in>
-    <input type="text" class=text_field id='house_title' placeholder="Enter Description">
-    <input type="text" class=text_field id='start' placeholder="Enter start date">
-    <input type="text" class=text_field id='end' placeholder="Enter end date">
-    <input type="text" class=text_field id='rules' placeholder="Enter any house rules">
+  <form id=signUpForm class='hidden_form' method=post action=login>
+    <input type="text" class=text_field name="address" placeholder="Enter address">
+    <input type="text" class=text_field name="post_code" placeholder="Enter post code">
+    <input type="text" class=text_field name="photo" placeholder="Enter a photo">
     <input type=submit id='submitNewProperty' value=Submit>
   </form>
 
-<button type="button" name="Msgs">MSGs</button>
+<form action="/Messages">
+    <input type="submit" value="MSGs" />
+</form>
+
+<div id = 'table'>
+<table>
+  <tr>
+  <h1> Your properties </h1>
+  </tr> 
+  <% Property.all.each do |record| %>
+  <tr>
+    <td class ='new_BnB'><%= record.address %> </td>
+    <td class ='code_BnB'> | <%= record.post_code%> </td>
+    <br>
+       <img src = <%= record.photo %> width="300" height="200" alt='test' >
+    </tr>
+   
+    </table>
+    <% end %>
+
 <!-- will add jquery to open msg / or will be own page -->
 
 

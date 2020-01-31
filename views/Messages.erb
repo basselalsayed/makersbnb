@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title> {(BnB)} Connect </title>
+  </head>
+<div id = Messages>
+
+<form method = 'post' action='/Messages'>
+<input type='text' name='MSGs'>
+    <input type='submit' value='Send'>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2> Your sent MSGs </h2>
+    <p><%= @user.conversations.each do |convo| %>
+    <%=  convo.messages.each do |message|  %> 
+    <%= message.content  %>
+
+    <%=  end %>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Your received MSGs </h2>
+    <p>Some text..</p>
+  </div>
+</div>

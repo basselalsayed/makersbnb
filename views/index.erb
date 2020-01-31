@@ -1,5 +1,5 @@
-<!DOCTYPE html>  
-<html>  
+<!DOCTYPE html>
+<html>
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -14,19 +14,28 @@
     <span></span>
     <ul id="menu">
       <a href="/"><li>Home</li></a>
-      <a id='sign_up' class='lightbox_trigger'><li>Login</li></a>
-      <a href="#"><li>Sign Up</li></a>
+      <a href="/login"><li>Login</li></a>
+      <a href="/sign_up"><li>Sign Up</li></a>
       <a href="#"><li>Contact</li></a>
-      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
     </ul>
   </div>
 </nav>
 
   <body>
+  <%# <div class='container'> %>
   Hello BnB
   <%# <button type=submit id=signUpButton>Sign Up</button> %>
-<div id="wrapper" class='hidden_form'>
-     <form  method=post action=log_in>
+
+<%# <div id="wrapper" class='login_form'>
+  <form method=post action=log_in>
+    <input type=text class=text_field id='email' placeholder='Enter your email'>
+    <input type=text class=text_field id='password' placeholder='Enter a password'>
+    <input type=submit id='LogIn' value=Submit>
+    </form>
+</div> %>
+
+<div id="wrapper" class='signup_form'>
+  <form method=post action=sign_up>
     <input type=text class=text_field id='name' placeholder='Enter your full name'>
     <input type=text class=text_field id='email' placeholder='Enter your email'>
     <input type=text class=text_field id='phone' placeholder='Enter your phone number'>
@@ -42,6 +51,7 @@
     <input type=submit id='submitNewUser' value=Submit>
     </form> %>
 
+  
       
   <!-- source for interface file -->
   <script src="interface.js"></script>

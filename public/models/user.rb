@@ -50,6 +50,9 @@ class User
     Conversation.create(u1_id: @uid, u2_id: receiver_uid)
   end
 
+  def conversations
+    Conversation.all(uid: @uid)
+  end
 # class methods
 
 # creates a new user in the database
@@ -69,6 +72,9 @@ class User
     user = return_user('email', email)
     return false if user.num_tuples.zero?
     check_email_and_password(user, email, password)
+    # p password
+    # p email 
+    # p user 
   end
 
 # deletes a user and all associates properties/bookings
@@ -119,4 +125,6 @@ class User
   def self.is_email?(email)
     email =~ URI::MailTo::EMAIL_REGEXP
   end
-end
+
+  
+end 
