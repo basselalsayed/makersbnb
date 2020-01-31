@@ -38,9 +38,9 @@ class User
     user = return_user('email', email)
     return false if user.num_tuples.zero?
     check_email_and_password(user, email, password)
-    p password
-    p email 
-    p user 
+    # p password
+    # p email 
+    # p user 
   end
 
   # def self.authenticate(email, password)
