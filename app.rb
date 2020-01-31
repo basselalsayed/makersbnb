@@ -10,11 +10,11 @@ class BnB < Sinatra::Base
   get '/' do
     #if session[:user] 
 
-      @BnB = BnBControl.all 
+      # @BnB = BnBControl.all 
 
-      erb :index_logged_in 
+      # erb :index_logged_in 
     # else
-    #   erb :index
+      erb :index
     # end
   end
 
