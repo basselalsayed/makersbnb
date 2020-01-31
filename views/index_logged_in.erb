@@ -17,7 +17,7 @@
   <tr>
   <h1> BnB-able properties </h1>
   </tr> 
-  <% @proper.each do |record| %>
+  <% @property.all.each do |record| %>
   <tr>
      <td class ='new_BnB'><%= record.address%> </td>
     <td class ='code_BnB'> | <%= record.post_code%> </td>
@@ -63,3 +63,4 @@
   <script src="interface.js"></script>
 
 </div>
+</html>

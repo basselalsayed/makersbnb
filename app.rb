@@ -1,4 +1,4 @@
-# ENV['RACK_ENV'] = 'test'
+#ENV['RACK_ENV'] = 'test'
 # if i uncomment this line and set to test env the index_logged_in page breaks.
 # i dont know what to do here
 
@@ -13,15 +13,18 @@ require_relative './public/models/property'
 class BnB < Sinatra::Base
   enable :sessions
 
-  get '/' do
-   
-    @userMaster = User.new('email')
-    p @userMaster
+  before do
+    @property = Property
+    p '-------'
+    p @property #not getting anything outta p ?
+    @user = session[:user]
+  end
+  
+  get '/' do   
+    # @userMaster = User.new('email')
 
-    if session[:uid] = @uid
- 
-      @proper = Property.all
-
+    # if session[:uid] = @uid
+    if session[:user]
       erb :index_logged_in 
     else
       erb :index
@@ -29,16 +32,16 @@ class BnB < Sinatra::Base
   end
 
   get '/make_listings' do 
-    
-    @BnB = BnBControl.all 
 
-    @prop = Property.create(
-      address: params[:address],
-      post_code: params[:post_code],
-      photo: params[:photo],
-      pid: params[:pid],
-      uid: params[:uid]
-    )
+    # @BnB = BnBControl.all 
+
+    # @prop = Property.create(
+    #   address: params[:address],
+    #   post_code: params[:post_code],
+    #   photo: params[:photo],
+    #   pid: params[:pid],
+    #   uid: params[:uid]
+    # )
 
     # dates = space.make_dates(space.available_from, space.available_to)
     # dates.each do |date|
@@ -58,13 +61,14 @@ class BnB < Sinatra::Base
   get '/index_logged_in' do 
 
     @proper = Property.all 
-
+    p @proper
     erb :index_logged_in
   end
   
   post '/log_in' do
+    # User.log_in returns an instance of User with the attributes from the relevant row in the db
+    session[:user] = User.login(params[:email], params[:password])
     redirect '/'
-
   end
 
   run! if app_file == $0

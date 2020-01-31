@@ -14,7 +14,7 @@ class Property
   def self.all
      DatabaseConnection.query("SELECT * FROM properties").map { |row| Property.new(row) }
 
-   # p DatabaseConnection.query("SELECT * FROM properties").map { |row| Property.new(row) }
+     #p DatabaseConnection.query("SELECT * FROM properties").map { |row| Property.new(row) }
 
   end 
 
