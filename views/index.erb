@@ -7,6 +7,7 @@
   </head>
 
   <body>
+  <div class='container'>
   Hello BnB
   <tr>
     <title>Login</title>
@@ -14,9 +15,9 @@
       <link href="public/css/style.css" rel="stylesheet" type="text/css">
 
         <h1>{{LOGIN BnB}}</h1>
-          <div class='container'>
+          <%# <div class='container'> %>
 
-           <%# <form id='frmSignIn' name='frmSignIn' action='/log_in' method='post' onsubmit='return checkform(this);'>
+           <form id='frmSignIn' name='frmSignIn' action='/log_in' method='post' onsubmit='return checkform(this);'>
             <div class="form-row">
 
 
@@ -30,7 +31,7 @@
       <input type="submit" id="btn_submit_sign_in" value='Sign In'>
 
       </div>
-     </form> %>
+     </form>
   </div>
    
    <%# <button type=submit id=signUpButton>Sign In</button> %>

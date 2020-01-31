@@ -40,7 +40,7 @@ html, body {
 
      .container {
         background-color: #FFFFFF;
-        max-width: 600px;
+        max-width: 300px;
        margin: 20px auto 0 auto;
       padding: 15px 20px 1px 20px;
             }
@@ -59,3 +59,32 @@ html, body {
        flex: 1;
             }
     
+            .wrapper { 
+        background:#EFEFEF; 
+        box-shadow: 1px 1px 10px #999; 
+        margin: auto; 
+        text-align: center; 
+        position: relative;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        margin-bottom: 20px !important;
+        width: 300px;
+        padding-top: 5px;
+    }
+    .scrolls { 
+        overflow-x: scroll;
+        overflow-y: hidden;
+        height: 200px;
+    white-space:nowrap
+    } 
+    .imageDiv img { 
+        box-shadow: 1px 1px 10px #999; 
+        margin: 2px;
+        max-height: 200px;
+        cursor: pointer;
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    vertical-align:top;
+    }
