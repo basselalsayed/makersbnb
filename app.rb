@@ -1,4 +1,4 @@
-# ENV['RACK_ENV'] = 'test'
+ENV['RACK_ENV'] = 'test'
 # if i uncomment this line and set to test env the index_logged_in page breaks.
 # i dont know what to do here
 
